@@ -1,0 +1,5 @@
+---
+
+- include: packages.yml
+- include: config.yml
+#  when: config_name is defined and root_directory is defined
