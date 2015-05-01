@@ -1,0 +1,10 @@
+---
+- hosts: all
+  sudo: yes
+  vars:
+    name: glowing-bear
+    root_directory: /srv/www/glowing-bear/
+
+  roles:
+    - nginx
+    - glowing-bear
