@@ -1,0 +1,18 @@
+---
+
+- name: Ensure that nginx default configuration is unlinked
+  file:
+    path={{nginx_directory}}/sites-enabled/default
+    state=absent
+
+- name: nginx config is present
+  template:
+    src=config.j2
+    dest={{nginx_directory}}/sites-available/{{name}}
+
+- name: nginx config is enabled
+  file:
+    path={{nginx_directory}}/sites-enabled/{{name}}
+    src={{nginx_directory}}/sites-available/{{name}}
+    state=link
+  notify: reload nginx
