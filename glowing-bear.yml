@@ -7,4 +7,14 @@
 
   roles:
     - nginx
-    - glowing-bear
+
+  tasks:
+  - name: git is installed
+    apt:
+      name=git
+      state=latest
+  - name: Clone glowing-bear
+    git:
+      repo=https://github.com/glowing-bear/glowing-bear.git
+      dest=/srv/www/glowing-bear/
+      update=yes
